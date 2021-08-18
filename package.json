@@ -1,0 +1,19 @@
+{
+  "name": "circuits",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "hardhat": "^2.6.0",
+    "hardhat-circom": "^1.1.0"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "scripts": {
+    "circom:dev": "hardhat circom --deterministic --debug --verbose",
+    "circom:prod": "hardhat circom --verbose",
+    "snarkjs:vkey": "cd circuits && snarkjs zkey export verificationkey main.zkey verification_key.json"
+  }
+}
