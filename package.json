@@ -12,7 +12,7 @@
     "node": ">=14"
   },
   "scripts": {
-    "circom:dev": "hardhat circom --deterministic --debug --verbose",
+    "circom:dev": "hardhat circom --deterministic --debug --verbose --show-stack-traces",
     "circom:prod": "hardhat circom --verbose",
     "snarkjs:vkey": "cd circuits && snarkjs zkey export verificationkey main.zkey verification_key.json"
   }
