@@ -4,6 +4,8 @@ const ffjavascript = require('ffjavascript');
 
 const app = express();
 
+app.use(express.static('public'));
+
 app.use(express.json());
 
 const {stringifyBigInts: stringifyBigInts$3, unstringifyBigInts: unstringifyBigInts$1} = ffjavascript.utils;
