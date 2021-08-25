@@ -15,6 +15,8 @@
 		55B781FF24A61D480036F8E5 /* HandshakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B781FB24A61D480036F8E5 /* HandshakeViewController.swift */; };
 		55B7820024A61D480036F8E5 /* ActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B781FC24A61D480036F8E5 /* ActionsViewController.swift */; };
 		55B7820324A61D600036F8E5 /* WalletConnectSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 55B7820224A61D600036F8E5 /* WalletConnectSwift */; };
+		F2326C8B26D432F500994ECB /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = F2326C8A26D432F500994ECB /* Toast */; };
+		F25E68D026D5C9100078A25A /* gameSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E68CF26D5C9100078A25A /* gameSquare.swift */; };
 		F2CA96B326D302A400832761 /* secp256k1 in Frameworks */ = {isa = PBXBuildFile; productRef = F2CA96B226D302A400832761 /* secp256k1 */; };
 		F2CA96B626D302C900832761 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = F2CA96B526D302C900832761 /* SwiftyJSON */; };
 		F2CA96C426D302E700832761 /* Web3 in Frameworks */ = {isa = PBXBuildFile; productRef = F2CA96C326D302E700832761 /* Web3 */; };
@@ -36,6 +38,7 @@
 		55B781FA24A61D480036F8E5 /* WalletConnect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletConnect.swift; sourceTree = "<group>"; };
 		55B781FB24A61D480036F8E5 /* HandshakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandshakeViewController.swift; sourceTree = "<group>"; };
 		55B781FC24A61D480036F8E5 /* ActionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionsViewController.swift; sourceTree = "<group>"; };
+		F25E68CF26D5C9100078A25A /* gameSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameSquare.swift; sourceTree = "<group>"; };
 		F2CA96C926D3038000832761 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2CA96CA26D3038000832761 /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Base.lproj; sourceTree = "<group>"; };
 		F2CA96CB26D3038000832761 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -51,6 +54,7 @@
 				55B7820324A61D600036F8E5 /* WalletConnectSwift in Frameworks */,
 				F2CA96B326D302A400832761 /* secp256k1 in Frameworks */,
 				F2CA96C826D302E700832761 /* Web3PromiseKit in Frameworks */,
+				F2326C8B26D432F500994ECB /* Toast in Frameworks */,
 				F2CA96C626D302E700832761 /* Web3ContractABI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,6 +86,7 @@
 				F2CA96CA26D3038000832761 /* Base.lproj */,
 				F2CA96CB26D3038000832761 /* Util.swift */,
 				55B781FC24A61D480036F8E5 /* ActionsViewController.swift */,
+				F25E68CF26D5C9100078A25A /* gameSquare.swift */,
 				55B781FB24A61D480036F8E5 /* HandshakeViewController.swift */,
 				55B781F924A61D480036F8E5 /* MainViewController.swift */,
 				55B781FA24A61D480036F8E5 /* WalletConnect.swift */,
@@ -115,6 +120,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				F2326C8D26D4333500994ECB /* PBXTargetDependency */,
+				F221359726D42B5200EB0940 /* PBXTargetDependency */,
 				F2CA96B826D302DE00832761 /* PBXTargetDependency */,
 				F2CA96BA26D302DE00832761 /* PBXTargetDependency */,
 				F2CA96BC26D302DE00832761 /* PBXTargetDependency */,
@@ -130,6 +137,7 @@
 				F2CA96C326D302E700832761 /* Web3 */,
 				F2CA96C526D302E700832761 /* Web3ContractABI */,
 				F2CA96C726D302E700832761 /* Web3PromiseKit */,
+				F2326C8A26D432F500994ECB /* Toast */,
 			);
 			productName = ClientApp;
 			productReference = 55B781E524A61CE60036F8E5 /* WordLines.app */;
@@ -164,6 +172,7 @@
 				555DE0B124BC3516002714B9 /* XCRemoteSwiftPackageReference "Web3.swift" */,
 				F2CA96B126D302A400832761 /* XCRemoteSwiftPackageReference "secp256k1.swift" */,
 				F2CA96B426D302C800832761 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				F2326C8926D432F500994ECB /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 55B781A924A616A20036F8E5 /* Products */;
 			projectDirPath = "";
@@ -198,6 +207,7 @@
 				55B781FD24A61D480036F8E5 /* MainViewController.swift in Sources */,
 				55B781FF24A61D480036F8E5 /* HandshakeViewController.swift in Sources */,
 				55B7820024A61D480036F8E5 /* ActionsViewController.swift in Sources */,
+				F25E68D026D5C9100078A25A /* gameSquare.swift in Sources */,
 				55B781FE24A61D480036F8E5 /* WalletConnect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,6 +215,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F221359726D42B5200EB0940 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = F221359626D42B5200EB0940 /* SkyFloatingLabelTextField */;
+		};
+		F2326C8D26D4333500994ECB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = F2326C8C26D4333500994ECB /* Toast */;
+		};
 		F2CA96B826D302DE00832761 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = F2CA96B726D302DE00832761 /* WalletConnectSwift */;
@@ -374,7 +392,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GBVVFTJ5A2;
 				INFOPLIST_FILE = "$(SRCROOT)/WordLinesApp/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -393,7 +411,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GBVVFTJ5A2;
 				INFOPLIST_FILE = "$(SRCROOT)/WordLinesApp/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -445,6 +463,22 @@
 				kind = branch;
 			};
 		};
+		F221359326D42B4400EB0940 /* XCRemoteSwiftPackageReference "SkyFloatingLabelTextField" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Skyscanner/SkyFloatingLabelTextField.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		F2326C8926D432F500994ECB /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 		F2CA96B126D302A400832761 /* XCRemoteSwiftPackageReference "secp256k1.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Boilertalk/secp256k1.swift.git";
@@ -468,6 +502,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 55B781DB24A61B0D0036F8E5 /* XCRemoteSwiftPackageReference "WalletConnectSwift" */;
 			productName = WalletConnectSwift;
+		};
+		F221359626D42B5200EB0940 /* SkyFloatingLabelTextField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F221359326D42B4400EB0940 /* XCRemoteSwiftPackageReference "SkyFloatingLabelTextField" */;
+			productName = SkyFloatingLabelTextField;
+		};
+		F2326C8A26D432F500994ECB /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F2326C8926D432F500994ECB /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+		F2326C8C26D4333500994ECB /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F2326C8926D432F500994ECB /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 		F2CA96B226D302A400832761 /* secp256k1 */ = {
 			isa = XCSwiftPackageProductDependency;
