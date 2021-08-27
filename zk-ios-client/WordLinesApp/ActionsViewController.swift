@@ -93,7 +93,6 @@ class ActionsViewController: UIViewController {
         let big_inputs = inputs.map(EncodeHex)
 
         guard let transaction = contract["mintItem"]?(try! EthereumAddress(hex: self.walletAccount, eip55: true),
-                                                       "QmWncWK3cherDbRgkzzqZRfxAaShti29MTEMpFUmEcysXi",
                                                        big_pi_a as ABIEncodable,
                                                        big_pi_b as ABIEncodable,
                                                        big_pi_c as ABIEncodable,

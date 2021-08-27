@@ -94,6 +94,7 @@ async function run() {
     // console.log("CALLDATA:\n" + calldata);
 
     const input = JSON.parse(fs.readFileSync("./inputs/" + (inputJson ? inputJson : "input.json")));
+    console.log(input);
 
     const { proof, publicSignals } = await snarkjs.groth16.fullProve(
       input,

@@ -16,7 +16,8 @@ contract WordLinesToken is Verifier, ERC721, Ownable {
     _setBaseURI("https://ipfs.io/ipfs/");
   }
 
-  mapping(string => bytes32) public tokenURIToInput;
+  mapping(bytes32 => string) public inputToTokenURI;
+  mapping(address => mapping(string => bool)) public claimedTokenURIs;
 
   function getHash(uint[92] memory input) public pure returns (bytes32) {
     uint[] memory copy = new uint[](91);
@@ -26,7 +27,6 @@ contract WordLinesToken is Verifier, ERC721, Ownable {
 
   function mintItem(
           address to,
-          string memory tokenURI,
           uint[2] memory a,
           uint[2][2] memory b,
           uint[2] memory c,
@@ -35,14 +35,18 @@ contract WordLinesToken is Verifier, ERC721, Ownable {
       returns (uint256)
   {
       uint256 addr = uint256(to);
+      bytes32 inputHash = getHash(input);
       require(input[91] == addr, "Address does not match zk input address");
-      require(tokenURIToInput[tokenURI] == getHash(input), "TokenURI does not match zk input hash");
+      string memory tokenURI = inputToTokenURI[inputHash];
+      require(bytes(tokenURI).length != 0, "Invalid token URI");
+      require(claimedTokenURIs[to][tokenURI] != true, "Already claimed token URI");
       require(verifyProof(a, b, c, input), "Invalid Proof");
       
       _tokenIds.increment();
       uint256 id = _tokenIds.current();
       _mint(to, id);
       _setTokenURI(id, tokenURI);
+      claimedTokenURIs[to][tokenURI] = true;
 
       return id;
   }
@@ -53,7 +57,7 @@ contract WordLinesToken is Verifier, ERC721, Ownable {
     ) public onlyOwner
     returns (bool)
   {
-    tokenURIToInput[tokenURI] = getHash(input);
+    inputToTokenURI[getHash(input)] = tokenURI;
     return true;
   }
 

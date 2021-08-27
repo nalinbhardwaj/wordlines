@@ -32,8 +32,8 @@ class WalletConnect {
             name: "WordLines",
             description: "NFT backed zero knowledge game",
             icons: [URL(string: "https://gnosis-safe.io/app/favicon.ico")!],
-            url: URL(string: "https://gnosis-safe.io")!,
-            scheme: "gnosissafe")
+            url: URL(string: "https://nibnalin.me")!,
+            scheme: "wordlines")
         
         let dAppInfo = Session.DAppInfo(peerId: UUID().uuidString, peerMeta: clientMeta)
         
