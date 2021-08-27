@@ -23,7 +23,7 @@ class ActionsViewController: UIViewController {
     var client: Client!
     var session: Session!
     
-    let contractAddress = "0xb426733E5f42016fC9c5CDf1E66A760d1aE67Ba1"
+    let contractAddress = "0xde0334d74C7e84606324264513c8D30a041b2402"
     let pubSeed = getPublicSeed()
     
     var squareParams: gameSquareParameters!
@@ -141,7 +141,7 @@ fileprivate enum Stub {
         return Client.Transaction(from: from_address,
                                   to: to_address,
                                   data: data,
-                                  gas: "0x1312d00", // 20 million
+                                  gas: "0x1e8480", // 2 million
                                   gasPrice: nil,
                                   value: "0x0",
                                   nonce: nil
