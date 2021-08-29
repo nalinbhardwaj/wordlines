@@ -8,7 +8,7 @@ This project was made during [ETH Summer](https://summer.ethuniversity.org). Spe
 
 # Client Demo
 
-<video autoplay loop muted src="https://user-images.githubusercontent.com/6984346/131241142-9f789718-919d-4d35-9758-f9a545856efc.mp4" width="300" />
+https://user-images.githubusercontent.com/6984346/131266538-1a5a49ea-806c-4f71-8b39-f4295812b240.mp4
 
 
 ### User flow:
@@ -72,7 +72,8 @@ More on enforcement of each of the rules follows, but first, let's talk about po
 
 To represent a word as an integer, we use the general idea of rolling hashes, and encode the word as shown below:
 
-![polynomial hashing](./assets/poly-hashing.png)
+<img src="./assets/poly-hashing.png" width="300" />
+
 
 Each letter is represented by one digit in the base 32 representation and since we limit the length of input words to 6 characters, we obtain a unique representation of all possible words in integers less than 32<sup>6</sup> = 2<sup>5\*6</sup> = 2<sup>30</sup>. Note that we can technically go with a smaller base (like 29), but it is useful to choose a power of 2 since that allows us to work with the individual character binary representations in a clean way using the circomlib [`Bits2Num`](https://github.com/iden3/circomlib/blob/master/circuits/bitify.circom#L54) and [`Num2Bits`](https://github.com/iden3/circomlib/blob/master/circuits/bitify.circom#L24) circuits. This hashing and character extraction is implemented in the [`CharExtractor`](https://github.com/nalinbhardwaj/wordlines/blob/main/zkaffold-eth/packages/circom/circuits/wordlines/words.circom#L124) template.
 
@@ -115,12 +116,8 @@ This is one of the most interesting functions in the circuit. While it only extr
 
 Let's break down the problem we're trying to solve: find the last character in an array of integers such that it is not 27. To express this in the form of the circuit that has linear conditionals on each variable, we need a way to "turn off" contribution from the suffix of paddings of 27, and turn off the contribution from the prefix of values with some value != 27 to their right. That's almost verbatim what the template does: define two arrays of components `does_prefix_not_have_padding[WORD_SIZE]` and `is_suffix_padding[WORD_SIZE]`. As the name suggests, the only letter such that `does_prefix_not_have_padding[i]` is true and `is_suffix_padding[i+1]` is also true is the the last character of the non-padded string. So we can compute an AND() for every bit (5 bits since each letter is represented in base 32) of the letter with the two aforementioned signals, obtaining our answer!
 
-<figure>
-  <img
-  src="./assets/last-char.png"
-  alt="The last character.">
-  <figcaption>Notice that does_prefix_not_have_padding[i] AND is_suffix_padding[i+1] AND letter[i] is only non-zero for the last character.</figcaption>
-</figure>
+![The last character.](./assets/last-char.png)
+*Notice that does_prefix_not_have_padding[i] AND is_suffix_padding[i+1] AND letter[i] is only non-zero for the last character.*
 
 These circuits went through a few iterations, starting with a simple word comparison based circuit, followed by a second step to employ polynomial hashing to reduce inputs by a factor of word length(*6 times*), finally followed by the use of the clever compression trick to store *8 times* as many words per input. The [git](https://github.com/nalinbhardwaj/wordlines/commit/2019af49dbb7310a54cbd27e218fc1ec7fff25b3) [history](https://github.com/nalinbhardwaj/wordlines/commit/e59ed70ea59d0a14a71f6195fc9b18f61d285367) of this project is a cool way to walk through me fumbling my way across each of these ideas.
 
