@@ -58,7 +58,7 @@ The circuit assumes an input of the following parameters:
 - private input "private_address": the address of the user solving this puzzle
 - public input "address": copy of private_address.
 
-The first three inputs are used to encode the solution to the proof. The core circuit enforces three rules on these inputs:
+The first three inputs are used to fully describe the solution to the proof. For instance, for the puzzle in the demo video, the "line" would be: `["from", "music", "click", "king"]`, the "figure" would be `[["l", "u", "k"], ["r", "m", "i"], ["s", "c", "n"], ["o", "g", "f"]]` and the dictionary would be all the words that are possible to make using the letters in the figure. The core circuit enforces three rules on these inputs:
 
 1. All letters of the figure are covered at least once by the word letters
 2. Every word belongs to the dictionary.
@@ -141,7 +141,7 @@ Since the puzzle's proof (the "line") is independent of a user and everyone's pr
 
 I've used [`scaffold-eth`](https://github.com/austintgriffith/scaffold-eth/tree/zkaffold-eth) to handle development of the smart contracts, but unfortunately I found that it's documented quite inadequately. I ended up significantly rewriting their deploy/mint scripts and moving to a simple js script instead of using HardHat for handling deployments.
 
-The [`deploy.js`](https://github.com/nalinbhardwaj/wordlines/blob/main/zkaffold-eth/packages/hardhat/scripts/deploy.js) is relatively untouched, except for adding support for redeploying a previously generated contract, and cleaning up some code around the deployment process to non-localhost chains.
+The [`deploy.js`](https://github.com/nalinbhardwaj/wordlines/blob/main/zkaffold-eth/packages/hardhat/scripts/deploy.js) script is relatively untouched, except for adding support for redeploying a previously generated contract, and cleaning up some code around the deployment process to non-localhost chains.
 
 The [`mint.js`](https://github.com/nalinbhardwaj/wordlines/blob/main/zkaffold-eth/packages/hardhat/scripts/mint.js) script is a bit of misnomer now since all it does is add the ability to redeem new inputs (by giving them a corresponding token URI). It was significantly rewritten to support uploading JSON puzzle NFTs to IPFS and transferring ownership of the contract to a stable address and the ability to use that address instead of the default contract owner address to add new redeemable NFTs post initial deployment/ownership transfer.
 
