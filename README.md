@@ -127,9 +127,9 @@ Notice that I haven't talked about the last two inputs to the circuit in this se
 
 ### Implementation
 
-The smart contract implements two functions, `mintItem` and `addToken`.
+The smart contract implements two functions, [`mintItem`](https://github.com/nalinbhardwaj/wordlines/blob/main/zkaffold-eth/packages/hardhat/contracts/WordLinesToken.sol#L28) and [`addToken`](https://github.com/nalinbhardwaj/wordlines/blob/main/zkaffold-eth/packages/hardhat/contracts/WordLinesToken.sol#L54).
 
-`mintItem` allows anyone to submit their proof and "redeem" their NFT. It asserts a few conditions before redeeming: the public input "address" matches the adress trying to redeem the NFT (as described in [Replay attacks]), the input line and dictionary correspond to a valid NFT added using `addToken`, and that the address is not claiming the NFT a second time. The last condition is only meant to deter malicious actors from trying to claim an infinite supply of NFTs, and slowing them down by forcing them to generate a new address and a new zk proof corresponding to that new address before being able to mint a new token.
+`mintItem` allows anyone to submit their proof and "redeem" their NFT. It asserts a few conditions before redeeming: the public input "address" matches the adress trying to redeem the NFT (as described in [Replay attacks](https://github.com/nalinbhardwaj/wordlines#replay-attacks)), the input line and dictionary correspond to a valid NFT added using `addToken`, and that the address is not claiming the NFT a second time. The last condition is only meant to deter malicious actors from trying to claim an infinite supply of NFTs, and slowing them down by forcing them to generate a new address and a new zk proof corresponding to that new address before being able to mint a new token.
 
 The `addToken` function allows the owner of the contract to essentially add more puzzles by passing in a token URI corresponding to some public inputs(dictionary and figure).
 
@@ -165,5 +165,5 @@ To assemble the `CALLDATA` in the client, I use the [`Web3.swift`](https://githu
 
 There are two alternate (better) solutions (perhaps for a future project) for resolving the issues around large dictionary sizes and exceeding the contract size limit:
 
-- *Bloom filters*: Dictionary lookups are the classic use case for dictionary lookups, and it is likely hard/impossible to exploit the false-positive matching nature of bloom filters in any useful way (given the other constraints of the circuit). We can probably use any of the zk-safe hashes like mimc, Poseidon or Pedersen hashes (or all of them). We probably need to be careful about the number of constraints in the circuit with this approach, the number of constraints in the circuit already exceed ~40k, so adding too many more constraints will make this application infeasible.
+- *Bloom filters*: Dictionary lookups are the classic use case for bloom filters, and it is likely hard/impossible to exploit the false-positive matching nature of bloom filters in any useful way (given the other constraints of the circuit). We can probably use any of the zk-safe hashes like mimc, Poseidon or Pedersen hashes (or all of them). We probably need to be careful about the number of constraints in the circuit with this approach, the number of constraints in the circuit already exceed ~40k, so adding too many more constraints will make this application infeasible.
 - *Merkle path proofs*: All words of the dictionary can be put on the leaves of a merkle tree, and we can ask the solver to present the merkle path proof of O(log N) node hashes per word in the solution.
